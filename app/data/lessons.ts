@@ -1,0 +1,230 @@
+export interface Lesson {
+  id: string;
+  classId: string;
+  title: string;
+  trimestre: number;
+}
+export const lessons: Lesson[] = [
+  {
+    id: "i01",
+    classId: "i",
+    title: "العقيدة في القرآن الكريم",
+    trimestre: 1,
+  },
+  {
+    id: "i02",
+    classId: "i",
+    title: "العقيدة الإسلامية وأثرها على الفرد والمجتمع",
+    trimestre: 1,
+  },
+  {
+    id: "i03",
+    classId: "i",
+    title: "وسائل القرآن الكريم في تثبيت العقيدة",
+    trimestre: 1,
+  },
+  {
+    id: "i04",
+    classId: "i",
+    title: "الإسلام والرسالات السماوية",
+    trimestre: 1,
+  },
+  {
+    id: "i05",
+    classId: "i",
+    title: "العقل في القرآن الكريم",
+    trimestre: 1,
+  },
+  {
+    id: "i06",
+    classId: "i",
+    title: "مقاصد الشريعة الإسلامي",
+    trimestre: 1,
+  },
+  {
+    id: "i07",
+    classId: "i",
+    title: "منهج الإسلام في محاربة الإنحراف والجريمة",
+    trimestre: 2,
+  },
+  {
+    id: "i08",
+    classId: "i",
+    title: "المساوات أمام أحكام الشريعة",
+    trimestre: 2,
+  },
+  {
+    id: "i09",
+    classId: "i",
+    title: "الصحة النفسية والجسمية في القرآن الكريم",
+    trimestre: 2,
+  },
+  {
+    id: "i10",
+    classId: "i",
+    title: "مصادر التشريع الإسلامي",
+    trimestre: 2,
+  },
+  {
+    id: "i11",
+    classId: "i",
+    title: "القيم في القرآن الكريم",
+    trimestre: 2,
+  },
+  {
+    id: "i12",
+    classId: "i",
+    title: "الوقف في الإسلام",
+    trimestre: 2,
+  },
+  {
+    id: "i13",
+    classId: "i",
+    title: "مدخل إلى علم الميراث والورثة وطرق ميراثهم",
+    trimestre: 3,
+  },
+  {
+    id: "i14",
+    classId: "i",
+    title: "الربا وأحكامه",
+    trimestre: 3,
+  },
+  {
+    id: "i15",
+    classId: "i",
+    title: "من المعاملات المالية الجائزة",
+    trimestre: 3,
+  },
+  {
+    id: "i16",
+    classId: "i",
+    title: "الحرية الشخصية ومدى ارتباطها بحرية الآخرين",
+    trimestre: 3,
+  },
+  {
+    id: "i17",
+    classId: "i",
+    title: "من أحكام الأسرة في الإسلام(النسب/التبني/الكفالة)",
+    trimestre: 3,
+  },
+  {
+    id: "i18",
+    classId: "i",
+    title: "العلاقات الإجتماعية بين المسلمين وغيرهم",
+    trimestre: 3,
+  },
+  {
+    id: "i19",
+    classId: "i",
+    title: "خطبة الرسول ﷺ حجة الوداع",
+    trimestre: 3,
+  },
+  {
+    id: "h01",
+    classId: "h",
+    title: "تواريخ",
+    trimestre: 123,
+  },
+  {
+    id: "h02",
+    classId: "h",
+    title: "شخصيات تاريخ",
+    trimestre: 123,
+  },
+  {
+    id: "h03",
+    classId: "h",
+    title: "مصطلحات تاريخ",
+    trimestre: 123,
+  },
+  {
+    id: "h04",
+    classId: "h",
+    title: "بروز الصراع وتشكل العالم",
+    trimestre: 1,
+  },
+  {
+    id: "h05",
+    classId: "h",
+    title: "مساعي الإنفراج الدولي",
+    trimestre: 1,
+  },
+  {
+    id: "h06",
+    classId: "h",
+    title: "من الثنائية إلى الأحادية القطبية",
+    trimestre: 1,
+  },
+  {
+    id: "h07",
+    classId: "h",
+    title: "العمل المسلح ورد فعي الإستعمار",
+    trimestre: 2,
+  },
+  {
+    id: "h08",
+    classId: "h",
+    title: "استعادة السيادة الوطنية وبناية الدولة الجزائرية",
+    trimestre: 2,
+  },
+  {
+    id: "h09",
+    classId: "h",
+    title: "العالم الثالث بين تراجع الاستعمار التقليدي واستمرارية حركات التحرر",
+    trimestre: 3,
+  },
+  {
+    id: "h10",
+    classId: "h",
+    title: "فلسطين من تصفية الاستعمار التقليدي إلى الهيمنة الأحادية والتواطئ الدولي",
+    trimestre: 3,
+  },
+  {
+    id: "g01",
+    classId: "g",
+    title: "مصطلحات جغرافيا",
+    trimestre: 123,
+  },
+  {
+    id: "g02",
+    classId: "g",
+    title: "إشكالية التخلف والتقدم",
+    trimestre: 1,
+  },
+  {
+    id: "g03",
+    classId: "g",
+    title: "إشكالية المبادلات والتنقلات في العالم",
+    trimestre: 1,
+  },
+  {
+    id: "g04",
+    classId: "g",
+    title: "مصادر القوة للولايات المتحدة الأمريكية",
+    trimestre: 1,
+  },
+  {
+    id: "g05",
+    classId: "g",
+    title: "ظاهرة التكتل وأثرها في قوة الإتحاد الأوروبي",
+    trimestre: 2,
+  },
+  {
+    id: "g06",
+    classId: "g",
+    title: "لعلاقة بين السكان والتنمية في شرق وجنوب شرق آسيا",
+    trimestre: 3,
+  },
+  {
+    id: "g07",
+    classId: "g",
+    title: "الاقتصاد الجزائري في العالم",
+    trimestre: 3,
+  },
+  {
+    id: "g08",
+    classId: "g",
+    title: "التنمية في البرازيل",
+    trimestre: 3,
+  },
+]
