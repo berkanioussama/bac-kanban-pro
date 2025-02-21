@@ -1,57 +1,44 @@
 'use client'
-import { lessons } from "@/app/data/lessons";
-import DragCard from "./drag-card";
-import { useSnapshot } from "valtio";
-import classState from "@/lib/state";
+import { Lesson as LessonType } from "@/app/data/lessons"; 
+import DragCard from "./drag-card"; 
+import { useDroppable } from "@dnd-kit/core"; 
 
-const Column = ({ title, tag }: { title: string, tag: string }) => {
-  const snap = useSnapshot(classState)
-  
-  const lessonsDefault = lessons.map(lesson => ({
-    ...lesson,
-    tag: "todo",
-  }));
-
-  let filteredLessonsByClass
-  if (classState.classId === "0") {
-    filteredLessonsByClass = lessonsDefault
-  } else {
-    filteredLessonsByClass = lessonsDefault.filter(lesson => lesson.classId === classState.classId);
-  }
-
-  let filteredLessonsByTrimestre
-  if (classState.trimestre === "0") {
-    filteredLessonsByTrimestre = filteredLessonsByClass
-  } else {
-    filteredLessonsByTrimestre = filteredLessonsByClass.filter(lesson => lesson.trimestre === Number(classState.trimestre));
-  }
-
-  const filteredLessons = filteredLessonsByTrimestre.filter(lesson => lesson.tag === tag);
-  const ColumnHeader = () => {
-    return (
-      <div className="flex items-center justify-between p-4 bg-gray-200 border rounded-lg">
-        <h3 className="text-lg font-bold">{title}</h3>
-        <span className="text-sm w-8 h-8 flex items-center justify-center rounded-full bg-main text-white">{filteredLessons.length}</span>
-      </div>
-    );
-  }
-
-  const ColumnBody = () => {
-    return (
-      <div className="flex flex-col gap-3">
-        {filteredLessons.map((lesson) => (
-          <DragCard lesson={lesson} />
-        ))}
-      </div>
-    );
-  }
-
-  return (
-    <div className="flex flex-col gap-6 p-4 border rounded-xl">
-      <ColumnHeader />
-      <ColumnBody />
-    </div>
-  );
+interface Lesson extends LessonType { 
+  tag: string; 
 }
- 
-export default Column;
+
+const Column = ({ column, lessons }: { column: { id: string; title: string; tag: string; }, lessons: Lesson[] }) => { 
+  const { setNodeRef } = useDroppable({ 
+    id: column.tag  // Use tag instead of id
+  });
+
+  return ( 
+    <div ref={setNodeRef} className="flex flex-col gap-6 p-4 border rounded-xl"> 
+      <ColumnHeader title={column.title} lessonsNumber={lessons.length} /> 
+      <ColumnBody lessons={lessons} /> 
+    </div> 
+  ); 
+} 
+  
+export default Column; 
+
+export const ColumnHeader = ({ title, lessonsNumber }: { title: string, lessonsNumber: number }) => { 
+  return ( 
+    <div className="flex items-center justify-between p-4 bg-gray-200 border rounded-lg"> 
+      <h3 className="text-lg font-bold">{title}</h3> 
+      <span className="text-sm w-8 h-8 flex items-center justify-center rounded-full bg-main text-white">
+        {lessonsNumber}
+      </span> 
+    </div> 
+  ); 
+} 
+
+export const ColumnBody = ({ lessons }: { lessons: Lesson[] }) => { 
+  return ( 
+    <div className="flex flex-col gap-3"> 
+      {lessons.map((lesson) => ( 
+        <DragCard key={lesson.id} lesson={lesson} /> 
+      ))} 
+    </div> 
+  ); 
+}
