@@ -34,10 +34,10 @@ const DragCard = ({ lesson }: { lesson: Lesson }) => {
       {...listeners} 
       {...attributes} 
       style={style} 
-      className="flex flex-col gap-2 p-3 border rounded-lg"
+      className="flex flex-col gap-2 px-3 pt-2.5 pb-2 border rounded-lg bg-white"
     > 
-      <h4 className="font-bold">{lesson.title}</h4> 
-      <span className="flex items-center justify-center w-fit text-xs bg-gray-200 px-2 py-1 rounded-full">
+      <h4 className="font-bold border-b pb-2.5">{lesson.title}</h4> 
+      <span className="flex items-center justify-center w-fit text-[11px] bg-blue-200/50 px-1.5 py-0.5 rounded-full">
         {trimestreLabel(lesson.trimestre)}
       </span> 
     </div> 

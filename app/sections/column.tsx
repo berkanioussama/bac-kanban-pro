@@ -7,14 +7,14 @@ interface Lesson extends LessonType {
   tag: string; 
 }
 
-const Column = ({ column, lessons }: { column: { id: string; title: string; tag: string; }, lessons: Lesson[] }) => { 
+const Column = ({ column, lessons }: { column: { id: string; title: string; tag: string; color: string }, lessons: Lesson[] }) => { 
   const { setNodeRef } = useDroppable({ 
     id: column.tag  // Use tag instead of id
   });
 
   return ( 
     <div ref={setNodeRef} className="flex flex-col gap-6 p-4 border rounded-xl"> 
-      <ColumnHeader title={column.title} lessonsNumber={lessons.length} /> 
+      <ColumnHeader title={column.title} lessonsNumber={lessons.length} color={column.color} /> 
       <ColumnBody lessons={lessons} /> 
     </div> 
   ); 
@@ -22,11 +22,11 @@ const Column = ({ column, lessons }: { column: { id: string; title: string; tag:
   
 export default Column; 
 
-export const ColumnHeader = ({ title, lessonsNumber }: { title: string, lessonsNumber: number }) => { 
+export const ColumnHeader = ({ title, lessonsNumber, color }: { title: string, lessonsNumber: number, color: string }) => { 
   return ( 
-    <div className="flex items-center justify-between p-4 bg-gray-200 border rounded-lg"> 
+    <div className="flex items-center justify-between p-2 border border-r-4 rounded-lg" style={{ borderColor: color }}> 
       <h3 className="text-lg font-bold">{title}</h3> 
-      <span className="text-sm w-8 h-8 flex items-center justify-center rounded-full bg-main text-white">
+      <span className="text-sm w-6 h-6 flex items-center justify-center rounded-full text-white" style={{ backgroundColor: color }}>
         {lessonsNumber}
       </span> 
     </div> 
