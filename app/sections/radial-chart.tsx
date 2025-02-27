@@ -1,36 +1,19 @@
-"use client"
+"use client";
 
 import {
-  Label,
-  PolarGrid,
-  PolarRadiusAxis,
-  RadialBar,
-  RadialBarChart,
-} from "recharts"
+  Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart, } from "recharts";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { ChartConfig, ChartContainer } from "@/components/ui/chart"
-import { Lesson as LessonType } from "../data/lessons"
+import { ChartConfig, ChartContainer } from "@/components/ui/chart";
+import { Lesson as LessonType } from "../data/lessons";
+
 const chartData = [
   { browser: "safari", visitors: 50, fill: "var(--color-main)" },
-]
+];
 
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  safari: {
-    label: "Safari",
-    color: "hsl(var(--chart-2))",
-  },
-} satisfies ChartConfig
+  visitors: { label: "Visitors", },
+  safari: {  label: "Safari",  color: "hsl(var(--chart-2))", },
+} satisfies ChartConfig;
 
 interface Lesson extends LessonType {
   tag: string;
@@ -44,16 +27,7 @@ const RadialChart = ({ lessons }: { lessons: Lesson[] }) => {
   const percentage = Math.round((done / total) * 100);
 
   return (
-    <Card className="flex flex-col">
 
-      <CardHeader className="items-center pb-0">
-        <CardTitle>إحصائيات التقدم</CardTitle>
-        <CardDescription>
-          {new Date().toLocaleDateString("ar", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
-        </CardDescription>
-      </CardHeader>
-
-      <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square max-h-[250px]"
@@ -61,7 +35,7 @@ const RadialChart = ({ lessons }: { lessons: Lesson[] }) => {
           <RadialBarChart
             data={chartData}
             startAngle={0}
-            endAngle={percentage*3.6}
+            endAngle={percentage * 3.6}
             innerRadius={80}
             outerRadius={110}
           >
@@ -99,20 +73,14 @@ const RadialChart = ({ lessons }: { lessons: Lesson[] }) => {
                           تم
                         </tspan>
                       </text>
-                    )
+                    );
                   }
                 }}
               />
             </PolarRadiusAxis>
           </RadialBarChart>
         </ChartContainer>
-      </CardContent>
-      
-      <CardFooter className="flex-col gap-2 text-sm">
-        
-      </CardFooter>
-    </Card>
-  )
-}
+  );
+};
 
-export default RadialChart
+export default RadialChart;

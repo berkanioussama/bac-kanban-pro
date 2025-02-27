@@ -2,10 +2,23 @@
 import { useSnapshot } from "valtio"
 import classState from "@/lib/state"
 import RadialChart from "./radial-chart";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 const StaticsSidebar = () => {
 
   const snap = useSnapshot(classState);
+
+  const [currentDate, setCurrentDate] = useState("");
+  
+  useEffect(() => {
+    setCurrentDate(
+      new Date().toLocaleDateString("ar", {
+        weekday: "long", year: "numeric", month: "long", day: "numeric",
+      })
+    );
+  }, []);
 
 
   const filteredLessons = snap.lessons.filter(
@@ -16,7 +29,7 @@ const StaticsSidebar = () => {
 
   const total = filteredLessons.length;
   const done = filteredLessons.filter((lesson) => lesson.tag === "done").length;
-  const inProgress = filteredLessons.filter(
+  const progress = filteredLessons.filter(
     (lesson) => lesson.tag === "progress"
   ).length;
   const todo = filteredLessons.filter((lesson) => lesson.tag === "todo").length;
@@ -24,42 +37,39 @@ const StaticsSidebar = () => {
 
   return (
     <div className="w-md bg-white p-6 rounded-3xl">
-      <div>
-        <RadialChart lessons={filteredLessons} />
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <p>كل الدروس</p>
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-4 border-r-6 border-main" />
-            <span className="text-2xl font-medium leading-none">{total}</span>
+      <Card className="flex flex-col">
+        <CardHeader className="items-center pb-0">
+          <CardTitle>إحصائيات التقدم</CardTitle>
+          <CardDescription>{currentDate}</CardDescription>
+        </CardHeader>
+
+        <CardContent className="flex-1 pb-0">
+          <RadialChart lessons={filteredLessons} />
+        </CardContent>
+        
+        <CardFooter>
+          <div className="grid grid-cols-2 gap-4 w-full">
+            <StaticItem title={"كل الدروس"} number={total} color={"black/50"} />
+            <StaticItem title={"للقيام به"} number={todo} color={"todo"} />
+            <StaticItem title={"في التقدم"} number={progress} color={"progress"} />
+            <StaticItem title={"تم"} number={done} color={"main"}  />
           </div>
-        </div>
-        <div>
-          <p>في التقدم</p>
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-4 border-r-6 border-main" />
-            <span className="text-2xl font-medium leading-none">{inProgress}</span>
-          </div>
-          
-        </div>
-        <div>
-          <p>للقيام به</p>
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-4 border-r-6 border-main" />
-            <span className="text-2xl font-medium leading-none">{todo}</span>
-          </div>
-        </div>
-        <div>
-          <p>تم</p>
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-4 border-r-6 border-main" />
-            <span className="text-2xl font-medium leading-none">{done}</span>
-          </div>
-        </div>
-      </div>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
  
 export default StaticsSidebar;
+
+const StaticItem = ({ title, number, color }: { title: string, number: number, color: string}) => {
+  return (
+    <div className=" p-3 bg-gray-200 rounded-lg">
+      <p className="text-sm mb-1">{title}</p>
+      <div className="flex items-center gap-2">
+        <div className={clsx("w-1.5 h-5 border-r-5", `border-${color}`)} />
+        <span className="h-5 text-2xl font-medium leading-[20px]">{number}</span>
+      </div>
+    </div>
+  )
+}
