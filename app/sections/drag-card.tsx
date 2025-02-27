@@ -34,7 +34,7 @@ const DragCard = ({ lesson }: { lesson: Lesson }) => {
       {...listeners} 
       {...attributes} 
       style={style} 
-      className="flex flex-col gap-2 px-3 pt-2.5 pb-2 border rounded-lg bg-white"
+      className="flex flex-col gap-2 px-3 pt-2.5 pb-2 border rounded-lg bg-white ease-out duration-300"
     > 
       <h4 className="font-bold border-b pb-2.5">{lesson.title}</h4> 
       <span className="flex items-center justify-center w-fit text-[11px] bg-blue-200/50 px-1.5 py-0.5 rounded-full">

@@ -1,14 +1,10 @@
 "use client";
+
 import Column from "./column";
-import { Lesson as LessonType, lessons as lessonsArray } from "@/app/data/lessons";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
-import { useState, useEffect } from "react";
 import { useSnapshot } from "valtio";
 import classState from "@/lib/state";
-
-interface Lesson extends LessonType {
-  tag: string;
-}
+import { useEffect } from "react";
 
 const Columns = [
   { id: "c1", title: "للقيام به", tag: "todo", color: "#000018" },
@@ -20,34 +16,27 @@ const LOCAL_STORAGE_KEY = "kanban_lessons";
 
 const Kanban = () => {
   const snap = useSnapshot(classState);
-  const [lessons, setLessons] = useState<Lesson[]>([]);
 
-  // Load lessons from localStorage on mount OR initialize default lessons
+  // Load lessons from localStorage on mount
   useEffect(() => {
     const storedLessons = localStorage.getItem(LOCAL_STORAGE_KEY);
 
     if (storedLessons) {
-      setLessons(JSON.parse(storedLessons));
+      classState.lessons = JSON.parse(storedLessons);
     } else {
-      // Initialize lessons with all classes if storage is empty
-      const initialLessons = lessonsArray.map((lesson) => ({
-        ...lesson,
-        tag: "todo"
-      }));
-      setLessons(initialLessons);
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(initialLessons));
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(snap.lessons));
     }
   }, []);
 
   // Update localStorage when lessons change
   useEffect(() => {
-    if (lessons.length > 0) {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lessons));
+    if (snap.lessons.length > 0) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(snap.lessons));
     }
-  }, [lessons]);
+  }, [snap.lessons]);
 
   // Filter lessons based on selected class and trimestre
-  const filteredLessons = lessons.filter(
+  const filteredLessons = snap.lessons.filter(
     (lesson) =>
       (snap.classId === "0" || lesson.classId === snap.classId) &&
       (snap.trimestre === "0" || lesson.trimestre === Number(snap.trimestre))
@@ -57,12 +46,10 @@ const Kanban = () => {
     const { active, over } = event;
     if (!over) return;
     const lessonId = active.id as string;
-    const newTag = over.id as Lesson["tag"];
+    const newTag = over.id as string;
 
-    setLessons((prevLessons) =>
-      prevLessons.map((lesson) =>
-        lesson.id === lessonId ? { ...lesson, tag: newTag } : lesson
-      )
+    classState.lessons = snap.lessons.map((lesson) =>
+      lesson.id === lessonId ? { ...lesson, tag: newTag } : lesson
     );
   }
 
