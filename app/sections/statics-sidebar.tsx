@@ -49,10 +49,10 @@ const StaticsSidebar = () => {
         
         <CardFooter>
           <div className="grid grid-cols-2 gap-4 w-full">
-            <StaticItem title={"كل الدروس"} number={total} color={"black"} />
-            <StaticItem title={"للقيام به"} number={todo} color={"todo"} />
-            <StaticItem title={"في التقدم"} number={progress} color={"progress"} />
-            <StaticItem title={"تم"} number={done} color={"main"}  />
+            <StaticItem title={"كل الدروس"} number={total} color={"border-black"} />
+            <StaticItem title={"للقيام به"} number={todo} color={"border-todo"} />
+            <StaticItem title={"في التقدم"} number={progress} color={"border-progress"} />
+            <StaticItem title={"تم"} number={done} color={"border-main"}  />
           </div>
         </CardFooter>
       </Card>
@@ -67,7 +67,7 @@ const StaticItem = ({ title, number, color }: { title: string, number: number, c
     <div className=" p-3 bg-gray-200 rounded-lg">
       <p className="text-sm mb-1">{title}</p>
       <div className="flex items-center gap-2">
-        <div className={clsx("w-1.5 h-5 border-r-5", `border-${color}`)} />
+        <div className={clsx("w-1.5 h-5 border-r-5", `${color}`)}/>
         <span className="h-5 text-2xl font-medium leading-[20px]">{number}</span>
       </div>
     </div>
