@@ -8,7 +8,9 @@ export default function Home() {
       <Navbar />
       <div className="flex gap-4 px-6">
         <Board />
-        <StaticsSidebar/>
+        <div className="hidden lg:block">
+          <StaticsSidebar/>
+        </div>
       </div>
     </main>
   );
