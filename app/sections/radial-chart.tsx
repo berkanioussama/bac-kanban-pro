@@ -4,7 +4,6 @@ import {
   Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart, } from "recharts";
 
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-import { Lesson as LessonType } from "../data/lessons";
 
 const chartData = [
   { browser: "safari", visitors: 50, fill: "var(--color-main)" },
@@ -15,11 +14,7 @@ const chartConfig = {
   safari: {  label: "Safari",  color: "hsl(var(--chart-2))", },
 } satisfies ChartConfig;
 
-interface Lesson extends LessonType {
-  tag: string;
-}
-
-const RadialChart = ({ lessons, percentage }: { lessons: Lesson[], percentage: number }) => {
+const RadialChart = ({ percentage }: { percentage: number }) => {
 
   return (
     <ChartContainer

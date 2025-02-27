@@ -44,7 +44,7 @@ const StaticsSidebar = () => {
         </CardHeader>
 
         <CardContent className="flex-1 pb-0">
-          <RadialChart lessons={filteredLessons} percentage={percentage} />
+          <RadialChart percentage={percentage} />
         </CardContent>
         
         <CardFooter>
