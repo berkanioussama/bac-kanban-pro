@@ -1,7 +1,7 @@
 import { proxy } from "valtio";
 
 const classState = proxy({
-    classId: "i",
+    classId: "0",
     trimestre: "0"
 });
 
