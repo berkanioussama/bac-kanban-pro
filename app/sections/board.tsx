@@ -3,14 +3,19 @@ import Kanban from "./kanban";
 import { classes } from "@/app/data/classes";
 import { ClassSwitcher } from "./class-switcher";
 import TrimestreSwitcher from "./trimestre-switcher";
+import { DivisionSwitcher } from "./division-switcher";
+import { divisions } from "../data/divisions";
 
 const Board = () => {
 
   const BoardTopBar = () => {
     return (
       <div className="flex items-center justify-between mb-8">
-        <ClassSwitcher classes={classes} />
-        <TrimestreSwitcher />
+        <DivisionSwitcher divisions={divisions} />
+        <div className="flex items-center gap-4">
+          <ClassSwitcher classes={classes} />
+          <TrimestreSwitcher />
+        </div>
       </div>
     );
   }

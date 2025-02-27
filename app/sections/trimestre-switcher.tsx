@@ -16,15 +16,15 @@ const TrimestreSwitcher = () => {
 
   const trimestres = [
     {
-      name: "الفصل الأول",
+      name: "🍂 الفصل الأول",
       number: "1"
     },
     {
-      name: "الفصل الثاني",
+      name: "❄️ الفصل الثاني",
       number: "2"
     },
     {
-      name: "الفصل الثالث",
+      name: "🌸 الفصل الثالث",
       number: "3"
     },
     
@@ -39,7 +39,7 @@ const TrimestreSwitcher = () => {
       </SelectTrigger>
       <SelectContent dir="rtl">
         <SelectGroup>
-          <SelectItem value="0">كل الفصول</SelectItem>
+          <SelectItem value="0">⏳ كل الفصول</SelectItem>
           {trimestres.map((trimestre) => (
             <SelectItem key={trimestre.number} value={trimestre.number}>
               {trimestre.name}

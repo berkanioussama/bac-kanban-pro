@@ -7,9 +7,9 @@ import classState from "@/lib/state";
 import { useEffect } from "react";
 
 const Columns = [
-  { id: "c1", title: "للقيام به", tag: "todo", color: "#000018" },
-  { id: "c2", title: "في التقدم", tag: "progress", color: "#EE9B18" },
-  { id: "c3", title: "تم", tag: "done", color: "#009B18" },
+  { id: "c1", title: "📌 للقيام به", tag: "todo", color: "#000018" },
+  { id: "c2", title: "🔄 في التقدم", tag: "progress", color: "#EE9B18" },
+  { id: "c3", title: "✅ تم", tag: "done", color: "#009B18" },
 ];
 
 const LOCAL_STORAGE_KEY = "kanban_lessons";

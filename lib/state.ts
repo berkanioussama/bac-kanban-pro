@@ -8,6 +8,7 @@ interface Lesson extends LessonType {
 const classState = proxy({
   classId: "0",
   trimestre: "0",
+  divisionId: "s",
   lessons: lessonsArray.map((lesson) => ({
     ...lesson,
     tag: "todo",

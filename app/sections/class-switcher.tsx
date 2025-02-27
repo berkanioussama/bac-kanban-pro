@@ -23,7 +23,7 @@ export function ClassSwitcher({classes}: {classes: Class[]}) {
       </SelectTrigger>
       <SelectContent dir="rtl">
         <SelectGroup>
-        <SelectItem value="0">كل المواد</SelectItem>
+        <SelectItem value="0">📚 كل المواد</SelectItem>
           {classes.map((cls) => (
             <SelectItem key={cls.id} value={cls.id}>
               {cls.name}

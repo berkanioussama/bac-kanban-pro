@@ -33,10 +33,10 @@ const StaticsSidebar = () => {
     (lesson) => lesson.tag === "progress"
   ).length;
   const todo = filteredLessons.filter((lesson) => lesson.tag === "todo").length;
-
+  const percentage = Math.round((done / total) * 100);
 
   return (
-    <div className="w-md bg-white p-6 rounded-3xl">
+    <div className="w-md h-fit bg-white p-6 rounded-3xl">
       <Card className="flex flex-col">
         <CardHeader className="items-center pb-0">
           <CardTitle>إحصائيات التقدم</CardTitle>
@@ -44,12 +44,12 @@ const StaticsSidebar = () => {
         </CardHeader>
 
         <CardContent className="flex-1 pb-0">
-          <RadialChart lessons={filteredLessons} />
+          <RadialChart lessons={filteredLessons} percentage={percentage} />
         </CardContent>
         
         <CardFooter>
           <div className="grid grid-cols-2 gap-4 w-full">
-            <StaticItem title={"كل الدروس"} number={total} color={"black/50"} />
+            <StaticItem title={"كل الدروس"} number={total} color={"black"} />
             <StaticItem title={"للقيام به"} number={todo} color={"todo"} />
             <StaticItem title={"في التقدم"} number={progress} color={"progress"} />
             <StaticItem title={"تم"} number={done} color={"main"}  />

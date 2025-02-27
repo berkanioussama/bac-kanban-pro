@@ -7,25 +7,25 @@ export interface Class {
 export const classes: Class[] = [
   {
     id: "i",
-    name: "العلوم الإسلامية",
+    name: "📖 العلوم الإسلامية",
     engName: "islamic-science",
     tag: "حفض"
   },
   {
     id: "h",
-    name: "تاريخ",
+    name: "🏺 تاريخ",
     engName: "history",
     tag: "حفض"
   },
   {
     id: "g",
-    name: "جغرافيا",
+    name: "🗺️ جغرافيا",
     engName: "geography",
     tag: "حفض"
   },
   {
     id: "p",
-    name: "فلسفة",
+    name: "🧠 فلسفة",
     engName: "philosophy",
     tag: "حفض"
   },

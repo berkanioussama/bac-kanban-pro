@@ -37,7 +37,7 @@ export const ColumnBody = ({ lessons }: { lessons: Lesson[] }) => {
   return ( 
     <div className="flex flex-col gap-3 "> 
       {lessons.map((lesson) => ( 
-        <DragCard key={lesson.id} lesson={lesson} /> 
+        <DragCard key={lesson.id} lesson={lesson}  /> 
       ))} 
     </div> 
   ); 
